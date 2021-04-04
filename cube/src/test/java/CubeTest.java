@@ -39,23 +39,11 @@ class CubeTest {
         );
     }
 
-    @DisplayName("random 큐브가 잘 만들어지는 확인")
+    @DisplayName("random 큐브와 normal 큐브가 출력이 되는지 확인")
     @Test
-    void createRandomCube() {
-        print(randomCube.getCubePlanMap().get(Plan.FRONT));
-        print(randomCube.getCubePlanMap().get(Plan.BACK));
-        print(randomCube.getCubePlanMap().get(Plan.RIGHT));
-        print(randomCube.getCubePlanMap().get(Plan.LEFT));
-        print(randomCube.getCubePlanMap().get(Plan.TOP));
-        print(randomCube.getCubePlanMap().get(Plan.BOTTOM));
-    }
-
-    private void print(char[][] plan) {
-        for (int i = 0; i < Cube.SIZE; i++) {
-            for (int j =0; j<Cube.SIZE; j++){
-                System.out.print(plan[i][j]);
-            }
-        }
+    void printCube() {
+        System.out.println(normalCube.toString());
         System.out.println();
+        System.out.println(randomCube.toString());
     }
 }

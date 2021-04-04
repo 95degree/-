@@ -1,10 +1,10 @@
-cube/CubeUtils.java
- cube.CubeUtils
 Main.java
  Main
+plan/Color.java
+ plan.Color
+plan/CubePlan.java
+ plan.CubePlan
 cube/Cube.java
  cube.Cube
-cube/Plan.java
- cube.Plan
-cube/Color.java
- cube.Color
+plan/Plan.java
+ plan.Plan
