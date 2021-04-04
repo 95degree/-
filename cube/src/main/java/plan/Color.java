@@ -1,4 +1,4 @@
-package cube;
+package plan;
 
 public enum Color {
     RED('R'),

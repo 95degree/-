@@ -1,23 +1,20 @@
-package cube;
+package plan;
 
 import java.util.*;
 
 import static cube.Cube.SIZE;
 
-public class CubeUtils {
+public class CubePlan {
 
-    private CubeUtils() {
+    public  Map<Plan, char[][]> createNormalCubePlanMap() {
+        return createCubePlanMap(makeNormalColorList());
     }
 
-    public static Map<Plan, char[][]> createNormalPlanMap() {
-        return createPlanMap(makeNormalColorList());
+    public Map<Plan, char[][]> createRandomCubePlanMap() {
+        return createCubePlanMap(makeRandomColorList());
     }
 
-    public static Map<Plan, char[][]> createRandomPlanMap() {
-        return createPlanMap(makeRandomColorList());
-    }
-
-    private static Map<Plan, char[][]> createPlanMap(List<Character> colorList) {
+    private  Map<Plan, char[][]> createCubePlanMap(List<Character> colorList) {
         Map<Plan, char[][]> planMap = new HashMap<>();
         int count = 0;
         for (Plan plan : Plan.values()) {
@@ -26,7 +23,7 @@ public class CubeUtils {
         return planMap;
     }
 
-    private static char[][] createColorPlan(List<Character> colorList, int count) {
+    private  char[][] createColorPlan(List<Character> colorList, int count) {
         char[][] plan = new char[SIZE][SIZE];
         int index = count * SIZE * SIZE;
         for (int i = 0; i < SIZE; i++) {
@@ -37,7 +34,7 @@ public class CubeUtils {
         return plan;
     }
 
-    private static List<Character> makeNormalColorList() {
+    private  List<Character> makeNormalColorList() {
         List<Character> colorList = new ArrayList<>();
         for (Color color : Color.values()) {
             for (int i = 0; i < SIZE * SIZE; i++) {
@@ -47,7 +44,7 @@ public class CubeUtils {
         return colorList;
     }
 
-    private static List<Character> makeRandomColorList() {
+    private List<Character> makeRandomColorList() {
         List<Character> colorList = makeNormalColorList();
         Collections.shuffle(colorList);
         return colorList;

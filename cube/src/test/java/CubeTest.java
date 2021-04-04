@@ -1,9 +1,9 @@
-import cube.Color;
 import cube.Cube;
-import org.junit.jupiter.api.BeforeAll;
+import plan.CubePlan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import plan.Plan;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,8 +14,9 @@ class CubeTest {
 
     @BeforeEach
     void createCube() {
-        normalCube = Cube.createNormal();
-        randomCube = Cube.createRandom();
+        CubePlan cubePlan = new CubePlan();
+        normalCube = new Cube(cubePlan.createNormalCubePlanMap());
+        randomCube = new Cube(cubePlan.createRandomCubePlanMap());
     }
 
     @DisplayName("normal 큐브가 잘 만들어지는지 확인")
@@ -29,24 +30,24 @@ class CubeTest {
         char[][] bottom = {{'P', 'P', 'P'}, {'P', 'P', 'P'}, {'P', 'P', 'P'}};
 
         assertAll(
-                () -> assertThat(normalCube.getFront()).isEqualTo(front),
-                () -> assertThat(normalCube.getBack()).isEqualTo(back),
-                () -> assertThat(normalCube.getRight()).isEqualTo(right),
-                () -> assertThat(normalCube.getLeft()).isEqualTo(left),
-                () -> assertThat(normalCube.getTop()).isEqualTo(top),
-                () -> assertThat(normalCube.getBottom()).isEqualTo(bottom)
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.FRONT)).isEqualTo(front),
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.BACK)).isEqualTo(back),
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.RIGHT)).isEqualTo(right),
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.LEFT)).isEqualTo(left),
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.TOP)).isEqualTo(top),
+                () -> assertThat(normalCube.getCubePlanMap().get(Plan.BOTTOM)).isEqualTo(bottom)
         );
     }
 
     @DisplayName("random 큐브가 잘 만들어지는 확인")
     @Test
     void createRandomCube() {
-        print(randomCube.getFront());
-        print(randomCube.getBack());
-        print(randomCube.getRight());
-        print(randomCube.getLeft());
-        print(randomCube.getTop());
-        print(randomCube.getBottom());
+        print(randomCube.getCubePlanMap().get(Plan.FRONT));
+        print(randomCube.getCubePlanMap().get(Plan.BACK));
+        print(randomCube.getCubePlanMap().get(Plan.RIGHT));
+        print(randomCube.getCubePlanMap().get(Plan.LEFT));
+        print(randomCube.getCubePlanMap().get(Plan.TOP));
+        print(randomCube.getCubePlanMap().get(Plan.BOTTOM));
     }
 
     private void print(char[][] plan) {
